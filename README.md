@@ -1,1 +1,3 @@
-# react-course
+# React-course-project 
+JustNotes
+
