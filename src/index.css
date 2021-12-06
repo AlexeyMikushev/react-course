@@ -27,8 +27,11 @@ code {
   left: 0;
   right: 0;
   /*z-index: 1000;*/
-  background-color: #2F4F4F;
+  background-color: #75b775;
   z-index: 100;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  /*border-width: 1px;*/
 
 }
 
@@ -37,6 +40,7 @@ code {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
 }
 .notes_body{
   top: 50px;
@@ -49,7 +53,7 @@ code {
   float: left;
   position: relative;
   color: black;
-  background-color: grey;
+  background-color: ghostwhite;
   width: 30%;
   height: 100vh;
   margin: 0px;
@@ -69,7 +73,7 @@ code {
   /*max-width: 1000px;*/
   height: 100vh;
   margin: 0 auto;
-  background-color: darkgray;
+  background-color: white;
   /*background: url("background.jpg") center no-repeat;*/
   /*-webkit-background-size: cover;*/
   /*background-size: cover;*/
@@ -87,3 +91,4 @@ code {
   display: inline-block;
   vertical-align: top;
 }
+
