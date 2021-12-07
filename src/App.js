@@ -6,6 +6,7 @@ import {Editor} from './components/Editor'
 import {NewNote} from './components/NewNote'
 import Notes from './components/Notes'
 import CreateNote from "./components/CreateNote";
+import CreateFolder from "./components/CreateFolder";
 class Button extends Component {
   render() {
     return <button className="button_add" />
@@ -17,9 +18,12 @@ class App extends Component {
     super(props);
     this.state = {
       notes: [
-        {id: 1, folder:'New Folder', title: 'title', date: '01-01-2021', text: 'text'}
+      ],
+      folders: [
+          { id: 1, folder:'New Folder'}
       ]
     }
+
   }
   addNote = (folder, title, date, text) =>{
     const CallBackState = this.state.notes;
@@ -28,6 +32,16 @@ class App extends Component {
       notes: CallBackState
     });
   }
+
+  addFolder = (folder) =>{
+    const CallBackState = this.state.folders;
+    CallBackState.push({id: CallBackState.length + 1, folder: folder});
+    this.setState({
+      folders: CallBackState
+    });
+  }
+
+
   render() {
     return (
         <header className="header">
@@ -41,7 +55,20 @@ class App extends Component {
         <div className="notes_body">
           <div className="folders">
             <div className="folders-title">Folders</div>
-              
+            <div>
+              <CreateFolder addFolder={this.addFolder}/>
+            {
+              this.state.folders.map((folder) => {
+                return (
+                    <button className="folderButton" folder = {folder.folder}>
+                      {folder.folder}
+                      </button>
+              )
+              })
+            }
+            {/*<button className="folderButton"> New Folder(1)</button>*/}
+
+            </div>
           </div>
           <div className="container">
             <div className="container-title">All Notes</div>

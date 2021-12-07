@@ -6,7 +6,6 @@ import '../App.css';
 
      constructor(props){
         super(props);
-        var today = new Date;
         this.state={
             folder: '',
             title: '',
@@ -16,19 +15,21 @@ import '../App.css';
     }
 
     handleUserInput = (e) => {
-        console.log(e.target.value)
         this.setState({
             newTitle: e.target.value
         })
     }
      handleUserInput2 = (e1) => {
-         console.log(e1.target.value)
          this.setState({
-             newText: e1.target.value
+             newText: e1
          })
      }
 
     addNote = (props, e1) => {
+         if (this.state.newTitle.length==0 || this.state.text.newText==0) {
+             alert('Заголовок или заметка пустая!');
+             return;
+         }
         let today = new Date();
         let date = today.getDate() + "-"+ parseInt(today.getMonth()+1) +"-"+today.getFullYear() + " " + today.getHours() + ":"+ today.getMinutes();
         this.props.addNote('New Folder',this.state.newTitle,date, this.state.newText)
@@ -44,8 +45,8 @@ import '../App.css';
                 <button className="button_add" onClick ={this.addNote}>
                     +
                 </button>
-                <form>
-                    <div className="textBox">
+                <form className="NoteEditForm">
+                    <div className="textBoxNotes">
                         <input
                             type= "text"
                             value = {this.state.newTitle}

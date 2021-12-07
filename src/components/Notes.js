@@ -1,16 +1,22 @@
 import React from 'react'
 import PropTypes from "prop-types"
+import '../App.css'
+// import { Icon, Label } from 'semantic-ui-react'
 
 import '../App.css';
 const Notes = (props) => {
     return (
-
-        <div className="Note">
-           <h1>{props.title}</h1>
-            <h2>{props.date} </h2>
-            {/*{props.title},*/}
-            {props.text}
+        <div className="NoteField">
+            <div className="Note">
+                <div className="NoteField">
+                    <h1>{props.title}</h1>
+                </div>
+                <div className="dateStamp">{props.date} </div>
+                {/*{props.title},*/}
+                {props.text}
+            </div>
         </div>
+
 
     )
 }
