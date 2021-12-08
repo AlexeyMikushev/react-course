@@ -1,6 +1,8 @@
 import React, {Component, useState} from 'react'
-import {Editor} from "./Editor";
 import '../App.css';
+import {CKEditor} from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import './EditorConfig'
 
  class CreateNote extends Component{
 
@@ -10,7 +12,8 @@ import '../App.css';
             folder: '',
             title: '',
             date: '',
-            text: ''
+            text: '',
+            editor:'',
         }
     }
 
@@ -19,23 +22,27 @@ import '../App.css';
             newTitle: e.target.value
         })
     }
-     handleUserInput2 = (e1) => {
+     handleUserInput2 = (e1, editor) => {
          this.setState({
-             newText: e1
+             newText: editor.getData(String)
          })
+         this.state.editor = editor
+
      }
 
     addNote = (props, e1) => {
-         if (this.state.newTitle.length==0 || this.state.text.newText==0) {
+         if ((!this.state.newTitle || !this.state.newText)) {
              alert('Заголовок или заметка пустая!');
              return;
          }
         let today = new Date();
-        let date = today.getDate() + "-"+ parseInt(today.getMonth()+1) +"-"+today.getFullYear() + " " + today.getHours() + ":"+ today.getMinutes();
+        let date = today.toLocaleDateString() + ' ' + today.toLocaleTimeString()
         this.props.addNote('New Folder',this.state.newTitle,date, this.state.newText)
         this.setState(
-            {folder: '', title:'', date: '', text: ''}
+            {folder: '', title:'', date: '', text: '', newTitle: ''}
         );
+        this.state.editor.setData('<p></p>')
+
     }
 
     render() {
@@ -55,8 +62,13 @@ import '../App.css';
                             placeholder={'введите заголовок'}
                         />
                     </div>
-
-                    <Editor className = "Editor1" getText = {this.state.newText} onChange={this.handleUserInput2}/>
+                    <div className="Editor">
+                        {/*<h1> Article</h1>*/}
+                        <CKEditor
+                            editor={ClassicEditor}
+                            onChange={this.handleUserInput2}
+                        />
+                    </div>
                 </form>
             </div>
         )

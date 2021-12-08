@@ -5,20 +5,28 @@ import '../App.css'
 
 import '../App.css';
 const Notes = (props) => {
-    return (
-        <div className="NoteField">
-            <div className="Note">
-                <div className="NoteField">
-                    <h1>{props.title}</h1>
+
+    if (props.currentFolder === props.folder) {
+        return (
+            <div className="NoteField">
+                <div className="Note">
+                    <div className="NoteField">
+                        <h1>{props.title}</h1>
+                    </div>
+                    <div className="dateStamp">{props.date} </div>
+                    {/*{props.title},*/}
+                    {props.text}
                 </div>
-                <div className="dateStamp">{props.date} </div>
-                {/*{props.title},*/}
-                {props.text}
             </div>
-        </div>
 
 
-    )
+        )
+    }
+    else
+        return (
+            <div>
+            </div>
+        )
 }
 Notes.propTypes = {
     folder: PropTypes.string,

@@ -2,8 +2,6 @@
 import React, {useState} from 'react';
 import './App.css';
 import {Component} from "react";
-import {Editor} from './components/Editor'
-import {NewNote} from './components/NewNote'
 import Notes from './components/Notes'
 import CreateNote from "./components/CreateNote";
 import CreateFolder from "./components/CreateFolder";
@@ -16,18 +14,20 @@ class Button extends Component {
 class App extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       notes: [
       ],
       folders: [
           { id: 1, folder:'New Folder'}
-      ]
+      ],
+      currentFolder: 'New Folder'
     }
 
   }
   addNote = (folder, title, date, text) =>{
     const CallBackState = this.state.notes;
-    CallBackState.push({id: CallBackState.length + 1, folder: folder, title: title, date: date, text: text});
+    CallBackState.push({id: CallBackState.length + 1, folder: this.state.currentFolder, title: title, date: date, text: text});
     this.setState({
       notes: CallBackState
     });
@@ -40,6 +40,13 @@ class App extends Component {
       folders: CallBackState
     });
   }
+  showNotesOfFolder = (e) =>{
+    this.state.currentFolder = e.target.value
+    this.forceUpdate()
+  }
+  renderNotes = () => {
+
+}
 
 
   render() {
@@ -60,7 +67,7 @@ class App extends Component {
             {
               this.state.folders.map((folder) => {
                 return (
-                    <button className="folderButton" folder = {folder.folder}>
+                    <button className="folderButton" value ={folder.folder} folder = {folder.folder} onClick={this.showNotesOfFolder}>
                       {folder.folder}
                       </button>
               )
@@ -71,7 +78,7 @@ class App extends Component {
             </div>
           </div>
           <div className="container">
-            <div className="container-title">All Notes</div>
+            <div className="container-title">Notes of {this.state.currentFolder}</div>
             <div className="App ">
               <header className="App-header">
                 {/*<img src={logo} className="App-logo" alt="logo" />*/}
@@ -88,6 +95,7 @@ class App extends Component {
                                    text = {note.text}
                                    id = {note.id}
                                    key = {note.id}
+                                   currentFolder = {this.state.currentFolder}
                             />
                         )
                       })

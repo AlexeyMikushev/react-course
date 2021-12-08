@@ -14,24 +14,23 @@ class CreateFolder extends Component {
 
     handleKeyDown = (e, props) => {
         if (e.key === 'Enter') {
+
             this.props.addFolder(e.target.value)
             this.setState(
                 {folder: ''}
             );
+            e.target.value = ''
         }
     }
-    addFolder = (props, e) => {
 
-    }
-
-    // const [value, setValue] = useState('')
     render() {
+
+    let value = ''
         return (
             <div>
                 <div className="textBoxFolders">
                     <input
                         type="text"
-                        value={''}
                         onKeyDown={this.handleKeyDown}
                         className="textBoxFolders"
                         placeholder={'введите название папки'}
