@@ -1,9 +1,11 @@
 import React from 'react'
 import PropTypes from "prop-types"
 import '../App.css'
-// import { Icon, Label } from 'semantic-ui-react'
-
+import parse from 'html-react-parser'
 import '../App.css';
+
+
+
 const Notes = (props) => {
 
     if (props.currentFolder === props.folder) {
@@ -11,15 +13,13 @@ const Notes = (props) => {
             <div className="NoteField">
                 <div className="Note">
                     <div className="NoteField">
-                        <h1>{props.title}</h1>
+                        <div className ="TitleOfNote">{props.title}
+                        </div>
                     </div>
-                    <div className="dateStamp">{props.date} </div>
-                    {/*{props.title},*/}
-                    {props.text}
+                    <div className="DateStamp">{props.date} </div>
+                    <div className="TextOfNote">{parse(props.text)}</div>
                 </div>
             </div>
-
-
         )
     }
     else

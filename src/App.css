@@ -2,10 +2,11 @@
 .App {
   text-align: center;
   color:black;
+
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 32px;
   pointer-events: none;
 }
 
@@ -30,6 +31,10 @@
   color: #61dafb;
 }
 
+.notesBody{
+  height: 100vh;
+}
+
 .button_add{
   width: 50px;
   height: 50px;
@@ -50,7 +55,7 @@
 
 }
 .textBoxFolders{
-  width: 200px;
+  width: 75%;
   height: 30px;
   margin-bottom: 15px;
   border-radius: 15px;
@@ -88,7 +93,7 @@
   border: black;
   /*margin: 15px;*/
 }
-.dateStamp{
+.DateStamp{
   font-size: 10px;
   margin: 10px;
   text-align: left;
@@ -105,13 +110,13 @@
   box-sizing: border-box;
 }
 .folders{
-  height: 100%;
+  height: 100vh ;
   text-align: center;
   align-items: center;
   align-content: center;
 }
 .folderButton{
-  width: 60%;
+  width: 58%;
   height: 30px;
   text-align: center;
   align-items: center;
@@ -120,5 +125,47 @@
   margin-bottom: 20px;
   display: inline-block;
   position: relative;
+
+}
+.TextOfNote{
+  text-align: left;
+}
+.TitleOfNote{
+  text-align: left;
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+}
+.NavigationBar{
+  display: inline-block;
+  position: relative;
+  background-color: #3E8B75;
+  width: 100%;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+
+}
+.homeButton{
+  display: inline-block;
+  margin-right: 30px;
+  margin-left: 30px;
+
+}
+.aboutButton{
+  margin-right: 30px;
+  margin-left: 30px;
+}
+.mr-auto{
+  display: flex;
+  text-align: left;
+}
+.aboutText{
+  display: table-row;
+  text-align: left;
+  align-items: center;
+  flex: content-box;
+
+
+
 
 }

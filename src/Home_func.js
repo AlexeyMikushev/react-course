@@ -6,16 +6,23 @@ import Notes from '../components/Notes'
 import CreateNote from "../components/CreateNote";
 import CreateFolder from "../components/CreateFolder";
 import  NavigationBar  from '../components/NavigationBar';
+// import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
+// class Button extends Component {
+//   render() {
+//     return <button className="button_add" />
+//   }
+// }
 function Home() {
     return (
         <div>
-        <NavigationBar/>
+
         <div> <Home1/></div>
+       
         </div>
     )
 }
-export class Home1 extends Component {
+function Home () {
     constructor(props) {
         super(props);
 
@@ -49,12 +56,15 @@ export class Home1 extends Component {
         this.setState({
             currentFolder: e.target.value
         })
+
         this.forceUpdate()
     }
 
     render() {
         return (
             <div>
+            <NavigationBar/>
+            <header className="header">
                 <div className="notesBody">
                     <div className="folders">
                         <div className="folders-title">Folders</div>
@@ -69,16 +79,18 @@ export class Home1 extends Component {
                                     )
                                 })
                             }
+                            {/*<button className="folderButton"> New Folder(1)</button>*/}
                         </div>
                     </div>
                     <div className="container">
                         <div className="container-title">Notes of {this.state.currentFolder}</div>
                         <div className="App">
                             <header className="App-header">
+                                
                                 <div>
                                     <div>
                                         <CreateNote addNote={this.addNote}/>
-                                            {
+                                        {
                                             this.state.notes.map((note) => {
                                                 return(
                                                     <Notes className="Notes"
@@ -89,19 +101,17 @@ export class Home1 extends Component {
                                                            id = {note.id}
                                                            key = {note.id}
                                                            currentFolder = {this.state.currentFolder}
-                                                           notes = {this.state.notes}
-
                                                     />
                                                 )
                                             })
-                                            }
+                                        }
                                     </div>
                                 </div>
                             </header>
                         </div>
                     </div>
                 </div>
-            </div>
+            </header>
         );
     }
 }

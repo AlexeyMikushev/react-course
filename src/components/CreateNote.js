@@ -1,11 +1,11 @@
-import React, {Component, useState} from 'react'
+import React, {Component} from 'react'
 import '../App.css';
 import {CKEditor} from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import './EditorConfig'
 
- class CreateNote extends Component{
 
+class CreateNote extends Component{
      constructor(props){
         super(props);
         this.state={
@@ -15,6 +15,7 @@ import './EditorConfig'
             text: '',
             editor:'',
         }
+
     }
 
     handleUserInput = (e) => {
@@ -26,13 +27,15 @@ import './EditorConfig'
          this.setState({
              newText: editor.getData(String)
          })
-         this.state.editor = editor
+         this.setState({
+             editor: editor
+         })
 
      }
 
     addNote = (props, e1) => {
          if ((!this.state.newTitle || !this.state.newText)) {
-             alert('Заголовок или заметка пустая!');
+             alert('Заголовок или заметка пустые!');
              return;
          }
         let today = new Date();
@@ -63,7 +66,6 @@ import './EditorConfig'
                         />
                     </div>
                     <div className="Editor">
-                        {/*<h1> Article</h1>*/}
                         <CKEditor
                             editor={ClassicEditor}
                             onChange={this.handleUserInput2}
