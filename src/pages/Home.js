@@ -37,7 +37,6 @@ export class Home1 extends Component {
             notes: CallBackState
         });
     }
-
     addFolder = (folder) =>{
         const CallBackState = this.state.folders;
         CallBackState.push({id: CallBackState.length + 1, folder: folder});
